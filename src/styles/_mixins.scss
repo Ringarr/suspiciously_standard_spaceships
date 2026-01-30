@@ -1,0 +1,11 @@
+@mixin full-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+@mixin center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

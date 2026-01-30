@@ -1,26 +1,14 @@
-import { useState } from 'react'
+
+import React from 'react'
 import './App.css'
+import { InitialBoard } from './components/InitialBoard'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <h1>Suspiciously Standard Spaceships</h1>
-      </div>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        A standard Node and React application written in TypeScript
-      </p>
-    </>
+    <React.StrictMode>
+      <InitialBoard />
+    </React.StrictMode>
   )
 }
 

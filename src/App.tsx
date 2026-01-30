@@ -1,13 +1,13 @@
 
 import React from 'react'
 import './App.css'
-import { InitialBoard } from './components/InitialBoard'
+import { BoardSandbox } from './components/BoardSandbox'
 
 function App() {
 
   return (
     <React.StrictMode>
-      <InitialBoard />
+      <BoardSandbox />
     </React.StrictMode>
   )
 }

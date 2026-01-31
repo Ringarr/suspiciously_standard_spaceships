@@ -1,33 +1,21 @@
 import React, { FC, useState } from "react";
+import { useSelector } from "react-redux";
 import "../styles/board.scss";
 import "../styles/cell.scss";
 import "../styles/ship.scss";
-import { Ship } from "../game/types";
 import { buildShipMap, key, rayCellsFrom, SIZE } from "../game/utils";
 
-
-
-
-
-const SHIPS: Ship[] = [
-  { id: "a1", owner: "A", pos: { x: 1, y: 6 }, facing: "N", hp: 3 },
-  { id: "a2", owner: "A", pos: { x: 2, y: 7 }, facing: "E", hp: 2 },
-  { id: "b1", owner: "B", pos: { x: 6, y: 1 }, facing: "S", hp: 3 },
-  { id: "b2", owner: "B", pos: { x: 5, y: 0 }, facing: "W", hp: 2 },
-];
-
-
-
 export const BoardSandbox: FC = () => {
-  const shipMap = React.useMemo(() => buildShipMap(SHIPS), []);
+  const gameState = useSelector((state: any) => state.game);
+  const shipMap = React.useMemo(() => buildShipMap(gameState.ships), [gameState.ships]);
   const [selectedShipId, setSelectedShipId] = useState<string | null>(
     "a1"
   );
 
   const selected = React.useMemo(() => {
     if (!selectedShipId) return null;
-    return SHIPS.find((s) => s.id === selectedShipId) ?? null;
-  }, [selectedShipId]);
+    return gameState.ships.find((s:any) => s.id === selectedShipId) ?? null;
+  }, [selectedShipId, gameState.ships]);
 
   const highlights = React.useMemo(() => {
     const map = new Map<string, "front" | "left" | "right">();
